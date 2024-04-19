@@ -112,7 +112,23 @@ public class Quiz extends JFrame implements ActionListener {
                     timer--;
                     timeleft.setText(str);
 
-                } else {
+                }else if(count==9){
+                    if (group.getSelection() == null) {
+                useranswer[count][0] = "false";
+            } else {
+                useranswer[count][0] = group.getSelection().getActionCommand();
+            }
+            for (int i = 0; i < useranswer.length; i++) {
+                if (useranswer[i][0].equals(answers[i][1])) {
+                    score += 10;
+                }
+            }
+            setVisible(false);
+            count = 0;
+            //calling the Score showing window
+            new Score(name, score);
+                }
+                else {   
                     timer = 10;
                     if (group.getSelection() == null) {
                         useranswer[count][0] = "false";
